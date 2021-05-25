@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-class ReallyProvider extends ChangeNotifier{
-
+class ReallyProvider extends ChangeNotifier {
   List<Color> colors = [
     Colors.teal,
     Colors.blueAccent,
@@ -39,6 +37,4 @@ class ReallyProvider extends ChangeNotifier{
     "March 2",
     "March 10",
   ];
-
-
 }

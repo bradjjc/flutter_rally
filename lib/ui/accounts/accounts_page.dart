@@ -3,8 +3,6 @@ import 'package:flutter_rally/model/rally_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-
-
 class AccountsPage extends StatefulWidget {
   final List<charts.Series> seriesList;
   final bool animate;
@@ -20,13 +18,11 @@ class AccountsPage extends StatefulWidget {
     );
   }
 
-
   @override
   _AccountsPageState createState() => _AccountsPageState();
 }
 
 class _AccountsPageState extends State<AccountsPage> {
-
   @override
   Widget build(BuildContext context) {
     var list = context.read<ReallyProvider>();
