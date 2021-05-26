@@ -1,63 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rally/model/rally_provider.dart';
+import 'package:pie_chart/pie_chart.dart';
 import 'package:provider/provider.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
+
 
 class AccountsPage extends StatefulWidget {
-  final List<charts.Series> seriesList;
-  final bool animate;
-
-  AccountsPage(this.seriesList, {this.animate});
-
-  /// Creates a [PieChart] with sample data and no transition.
-  factory AccountsPage.withSampleData() {
-    return new AccountsPage(
-      _createSampleData(),
-      // Disable animations for image tests.
-      animate: true,
-    );
-  }
+  const AccountsPage({Key key}) : super(key: key);
 
   @override
   _AccountsPageState createState() => _AccountsPageState();
 }
 
 class _AccountsPageState extends State<AccountsPage> {
+
   @override
   Widget build(BuildContext context) {
     var list = context.read<ReallyProvider>();
+    var chart = PieChart(
+      dataMap: list.accounts,
+      animationDuration: Duration(milliseconds: 100000),
+      chartLegendSpacing: 16.0,
+      chartRadius: MediaQuery.of(context).size.width / 1.4,
+      colorList: list.colors,
+      initialAngleInDegree: 0,
+      chartType: ChartType.ring,
+      ringStrokeWidth: 10,
+      centerText: "ACCOUNTS \n",
+      legendOptions: LegendOptions(
+        showLegendsInRow: false,
+        showLegends: false,
+        legendTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      chartValuesOptions: ChartValuesOptions(
+        showChartValuesOutside: true,
+        showChartValueBackground: true,
+        showChartValues: false,
+        showChartValuesInPercentage: false,
+        decimalPlaces: 1,
+      ),
+    );
 
-    return charts.PieChart(seriesList,
-        animate: animate,
-        // Configure the width of the pie slices to 60px. The remaining space in
-        // the chart will be left as a hole in the center.
-        defaultRenderer: new charts.ArcRendererConfig(arcWidth: 60));
+
+    return Column(
+      children: [
+        ListView(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(8),
+
+          children: <Widget>[
+          SizedBox(
+          height: 400,
+          child: LayoutBuilder(
+              builder: (_, constraints) {
+                if (constraints.maxWidth >= 600) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        fit: FlexFit.tight,
+                        child: chart,
+                      ),
+                      Flexible(
+                        flex: 1,
+                        // child: settings,
+                      )
+                    ],
+                  );
+                } else {
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          child: chart,
+                          margin: EdgeInsets.symmetric(
+                            vertical: 22, // 높
+                          ),
+                        ),
+                        // settings,
+                      ],
+                    ),
+                  );
+                }
+              },
+
+          ),
+          ),
+          ],
+        ),
+      ],
+    );
   }
-
-  /// Create one series with sample hard coded data.
-  static List<charts.Series<LinearSales, int>> _createSampleData() {
-    final data = [
-      new LinearSales(0, 100),
-      new LinearSales(1, 75),
-      new LinearSales(2, 25),
-      new LinearSales(3, 5),
-    ];
-
-    return [
-      new charts.Series<LinearSales, int>(
-        id: 'Sales',
-        domainFn: (LinearSales sales, _) => sales.year,
-        measureFn: (LinearSales sales, _) => sales.sales,
-        data: data,
-      )
-    ];
-  }
-}
-
-/// Sample linear data type.
-class LinearSales {
-  final int year;
-  final int sales;
-
-  LinearSales(this.year, this.sales);
 }
