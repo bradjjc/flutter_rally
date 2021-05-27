@@ -3,7 +3,6 @@ import 'package:flutter_rally/model/rally_provider.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:provider/provider.dart';
 
-
 class AccountsPage extends StatefulWidget {
   const AccountsPage({Key key}) : super(key: key);
 
@@ -12,20 +11,19 @@ class AccountsPage extends StatefulWidget {
 }
 
 class _AccountsPageState extends State<AccountsPage> {
-
   @override
   Widget build(BuildContext context) {
     var list = context.read<ReallyProvider>();
+
     var chart = PieChart(
       dataMap: list.accounts,
-      animationDuration: Duration(milliseconds: 100000),
+      animationDuration: Duration(milliseconds: 8000),
       chartLegendSpacing: 16.0,
-      chartRadius: MediaQuery.of(context).size.width / 1.4,
+      chartRadius: MediaQuery.of(context).size.width / 1.2,
       colorList: list.colors,
       initialAngleInDegree: 0,
       chartType: ChartType.ring,
-      ringStrokeWidth: 10,
-      centerText: "ACCOUNTS \n",
+      ringStrokeWidth: 8,
       legendOptions: LegendOptions(
         showLegendsInRow: false,
         showLegends: false,
@@ -38,10 +36,9 @@ class _AccountsPageState extends State<AccountsPage> {
         showChartValueBackground: true,
         showChartValues: false,
         showChartValuesInPercentage: false,
-        decimalPlaces: 1,
+        decimalPlaces: 2,
       ),
     );
-
 
     return Column(
       children: [
@@ -49,47 +46,132 @@ class _AccountsPageState extends State<AccountsPage> {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           padding: const EdgeInsets.all(8),
-
           children: <Widget>[
-          SizedBox(
-          height: 400,
-          child: LayoutBuilder(
-              builder: (_, constraints) {
-                if (constraints.maxWidth >= 600) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    // crossAxisAlignment: CrossAxisAlignment.center,
+            SizedBox(
+              // height: 400,
+              child: LayoutBuilder(builder: (_, constraints) {
+                return SingleChildScrollView(
+                  child: Column(
                     children: [
-                      Flexible(
-                        flex: 2,
-                        fit: FlexFit.tight,
-                        child: chart,
-                      ),
-                      Flexible(
-                        flex: 1,
-                        // child: settings,
-                      )
-                    ],
-                  );
-                } else {
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Container(
-                          child: chart,
-                          margin: EdgeInsets.symmetric(
-                            vertical: 22, // 높
+                      Stack(
+                        children: [
+                          Container(
+                            child: chart,
+                            margin: EdgeInsets.symmetric(
+                              vertical: 22, // 높
+                            ),
                           ),
-                        ),
-                        // settings,
-                      ],
-                    ),
-                  );
-                }
-              },
+                          Padding(
+                            padding: const EdgeInsets.only(top:150.0),
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Total",
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top:10.0),
+                                    child: Text(
+                                      "12,132.49",
+                                      style: TextStyle(
+                                        fontSize: 50.0,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Stack(
+                        children: [
+                          Container(
+                            child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: list.accountList == null
+                                    ? 0
+                                    : list.accountList.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return new GestureDetector(
+                                    //You need to make my child interactive
+                                    onTap: () => print(list.accountList[index]),
+                                    child: Container(
+                                      height: 90,
+                                      child: new Card(
+                                        //I am the clickable child
+                                        color: Color.fromRGBO(49, 50, 55, 1),
+                                        margin: EdgeInsets.only(top: 8.0),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(left:8.0, top: 10.0, bottom: 10.0),
+                                              child: Container(
+                                                color: list.colors[index],
+                                                width: 5,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top:20.0,right: 150.0),
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "${list.accountList[index]}",
+                                                    style: TextStyle(color: Colors.white),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top:7.0),
+                                                    child: Text(
+                                                      "${list.accountCard[index]}",
+                                                      style: TextStyle(color: Colors.white),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 1.0),
+                                               child: Text("\$ ${list.accountAmount[index]}",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 17,
+                                                  ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right:1.0),
+                                              child: Tab(
+                                                  icon: Icon(Icons.arrow_forward_ios_sharp,
+                                                  color: Colors.white,
+                                                  ),
 
-          ),
-          ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              }),
+            ),
           ],
         ),
       ],

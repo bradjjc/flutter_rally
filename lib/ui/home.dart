@@ -5,7 +5,6 @@ import 'package:flutter_rally/ui/bills/bills_page.dart';
 import 'package:flutter_rally/ui/overview/overview_page.dart';
 import 'package:provider/provider.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
 
 
 class Home extends StatefulWidget {
@@ -32,6 +31,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(40,38,46,1),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -45,23 +45,27 @@ class _HomeState extends State<Home> {
                   rippleColor: Colors.grey[300],
                   hoverColor: Colors.grey[100],
                   gap: 10,
-                  activeColor: Colors.black,
+                  activeColor: Colors.white,
+                  backgroundColor: Color.fromRGBO(40,38,46,1),
                   iconSize: 24,
                   // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                   duration: Duration(milliseconds: 400),
                   tabBackgroundColor: Colors.grey[100],
-                  color: Colors.black,
+                  color: Colors.white,
                   tabs: [
                     GButton(
-                      icon: LineIcons.home,
+                      backgroundColor: Color.fromRGBO(40,38,46,1),
+                      icon: Icons.donut_small_outlined,
                       text: 'OVERVIEW',
                     ),
                     GButton(
-                      icon: LineIcons.heart,
+                      backgroundColor: Color.fromRGBO(40,38,46,1),
+                      icon: Icons.attach_money,
                       text: 'ACCOUNTS',
                     ),
                     GButton(
-                      icon: LineIcons.search,
+                      backgroundColor: Color.fromRGBO(40,38,46,1),
+                      icon: Icons.money_off_rounded,
                       text: 'BILLS',
                     ),
                   ],
