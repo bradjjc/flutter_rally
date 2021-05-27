@@ -6,7 +6,6 @@ import 'package:flutter_rally/ui/overview/overview_page.dart';
 import 'package:provider/provider.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
 
@@ -22,6 +21,7 @@ class _HomeState extends State<Home> {
     AccountsPage(),
     BillsPage(),
   ];
+
   @override
   void initState() {
     super.initState();
@@ -31,12 +31,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(40,38,46,1),
+      backgroundColor: Color.fromRGBO(40, 38, 46, 1),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top:40.0),
+              padding: const EdgeInsets.only(top: 40.0),
               child: Container(
                 height: 80,
                 width: 500,
@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
                   hoverColor: Colors.grey[100],
                   gap: 10,
                   activeColor: Colors.white,
-                  backgroundColor: Color.fromRGBO(40,38,46,1),
+                  backgroundColor: Color.fromRGBO(40, 38, 46, 1),
                   iconSize: 24,
                   // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                   duration: Duration(milliseconds: 400),
@@ -54,17 +54,17 @@ class _HomeState extends State<Home> {
                   color: Colors.white,
                   tabs: [
                     GButton(
-                      backgroundColor: Color.fromRGBO(40,38,46,1),
+                      backgroundColor: Color.fromRGBO(40, 38, 46, 1),
                       icon: Icons.donut_small_outlined,
                       text: 'OVERVIEW',
                     ),
                     GButton(
-                      backgroundColor: Color.fromRGBO(40,38,46,1),
+                      backgroundColor: Color.fromRGBO(40, 38, 46, 1),
                       icon: Icons.attach_money,
                       text: 'ACCOUNTS',
                     ),
                     GButton(
-                      backgroundColor: Color.fromRGBO(40,38,46,1),
+                      backgroundColor: Color.fromRGBO(40, 38, 46, 1),
                       icon: Icons.money_off_rounded,
                       text: 'BILLS',
                     ),
@@ -78,18 +78,14 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top:20.0),
-              child: Container(
-                child: Center(
-                  child: _widgetOptions.elementAt(_selectedIndex),
-                ),
+            Container(
+              child: Center(
+                child: _widgetOptions.elementAt(_selectedIndex),
               ),
             ),
           ],
         ),
       ),
-
     );
   }
 }

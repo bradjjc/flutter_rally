@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class ReallyProvider extends ChangeNotifier {
   List<Color> colors = [
-    Color.fromRGBO(37,88,83,1),
-    Color.fromRGBO(29,70,59,1),
-    Color.fromRGBO(84,183,135,1),
-    Color.fromRGBO(121,238,190,1),
+    Color.fromRGBO(37, 88, 83, 1),
+    Color.fromRGBO(29, 70, 59, 1),
+    Color.fromRGBO(84, 183, 135, 1),
+    Color.fromRGBO(121, 238, 190, 1),
   ];
 
   List<Color> colorsTwo = [
-    Color.fromRGBO(229,201,134,1),
-    Color.fromRGBO(205,108,85,1),
-    Color.fromRGBO(233,223,215,1),
-    Color.fromRGBO(185,155,59,1),
-    Color.fromRGBO(241,193,39,1),
+    Color.fromRGBO(229, 201, 134, 1),
+    Color.fromRGBO(205, 108, 85, 1),
+    Color.fromRGBO(233, 223, 215, 1),
+    Color.fromRGBO(185, 155, 59, 1),
+    Color.fromRGBO(241, 193, 39, 1),
   ];
 
   Map<String, double> accounts = {

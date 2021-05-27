@@ -3,7 +3,6 @@ import 'package:flutter_rally/model/rally_provider.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:provider/provider.dart';
 
-
 class BillsPage extends StatefulWidget {
   const BillsPage({Key key}) : super(key: key);
 
@@ -63,7 +62,7 @@ class _BillsPageState extends State<BillsPage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top:150.0),
+                            padding: const EdgeInsets.only(top: 150.0),
                             child: Center(
                               child: Column(
                                 children: [
@@ -76,7 +75,7 @@ class _BillsPageState extends State<BillsPage> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top:10.0),
+                                    padding: const EdgeInsets.only(top: 10.0),
                                     child: Text(
                                       "1,810.09",
                                       style: TextStyle(
@@ -113,36 +112,47 @@ class _BillsPageState extends State<BillsPage> {
                                         color: Color.fromRGBO(49, 50, 55, 1),
                                         margin: EdgeInsets.only(top: 8.0),
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.only(left:8.0, top: 10.0, bottom: 10.0),
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0,
+                                                  top: 10.0,
+                                                  bottom: 10.0),
                                               child: Container(
                                                 color: list.colorsTwo[index],
                                                 width: 5,
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.only(top:20.0,right: 150.0),
+                                              padding: const EdgeInsets.only(
+                                                  top: 20.0, right: 150.0),
                                               child: Column(
                                                 children: [
                                                   Text(
                                                     "${list.billsList[index]}",
-                                                    style: TextStyle(color: Colors.white),
+                                                    style: TextStyle(
+                                                        color: Colors.white),
                                                   ),
                                                   Padding(
-                                                    padding: const EdgeInsets.only(top:7.0),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 7.0),
                                                     child: Text(
                                                       "${list.billsDate[index]}",
-                                                      style: TextStyle(color: Colors.white),
+                                                      style: TextStyle(
+                                                          color: Colors.white),
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.only(right: 1.0),
-                                              child: Text("-\$ ${list.billsAmount[index]}",
+                                              padding: const EdgeInsets.only(
+                                                  right: 1.0),
+                                              child: Text(
+                                                "-\$ ${list.billsAmount[index]}",
                                                 style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 17,
@@ -150,12 +160,13 @@ class _BillsPageState extends State<BillsPage> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.only(right:1.0),
+                                              padding: const EdgeInsets.only(
+                                                  right: 1.0),
                                               child: Tab(
-                                                icon: Icon(Icons.arrow_forward_ios_sharp,
+                                                icon: Icon(
+                                                  Icons.arrow_forward_ios_sharp,
                                                   color: Colors.white,
                                                 ),
-
                                               ),
                                             ),
                                           ],
@@ -178,4 +189,3 @@ class _BillsPageState extends State<BillsPage> {
     );
   }
 }
-

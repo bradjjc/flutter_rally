@@ -14,15 +14,17 @@ class OverviewAccount extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 15.0,left: 5.0),
-              child: Text("Accounts",
+              padding: const EdgeInsets.only(top: 15.0, left: 5.0),
+              child: Text(
+                "Accounts",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
               ),
             ),
-            Text("\$12,132.49",
+            Text(
+              "\$12,132.49",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 50,
@@ -30,7 +32,7 @@ class OverviewAccount extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top:30.0),
+              padding: const EdgeInsets.only(top: 30.0),
               child: Container(
                 height: 4,
                 // width: 200,
@@ -45,9 +47,7 @@ class OverviewAccount extends StatelessWidget {
               scrollDirection: Axis.vertical,
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: list.accountList == null
-                  ? 0
-                  : 3,
+              itemCount: list.accountList == null ? 0 : 3,
               itemBuilder: (BuildContext context, int index) {
                 return new GestureDetector(
                   //You need to make my child interactive
@@ -62,14 +62,16 @@ class OverviewAccount extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left:8.0, top: 10.0, bottom: 10.0),
+                            padding: const EdgeInsets.only(
+                                left: 8.0, top: 10.0, bottom: 10.0),
                             child: Container(
                               color: list.colors[index],
                               width: 5,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top:20.0,right: 150.0),
+                            padding:
+                                const EdgeInsets.only(top: 20.0, right: 150.0),
                             child: Column(
                               children: [
                                 Text(
@@ -77,7 +79,7 @@ class OverviewAccount extends StatelessWidget {
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top:7.0),
+                                  padding: const EdgeInsets.only(top: 7.0),
                                   child: Text(
                                     "${list.accountCard[index]}",
                                     style: TextStyle(color: Colors.white),
@@ -88,7 +90,8 @@ class OverviewAccount extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(right: 1.0),
-                            child: Text("\$ ${list.accountAmount[index]}",
+                            child: Text(
+                              "\$ ${list.accountAmount[index]}",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 17,
@@ -96,12 +99,12 @@ class OverviewAccount extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right:1.0),
+                            padding: const EdgeInsets.only(right: 1.0),
                             child: Tab(
-                              icon: Icon(Icons.arrow_forward_ios_sharp,
+                              icon: Icon(
+                                Icons.arrow_forward_ios_sharp,
                                 color: Colors.white,
                               ),
-
                             ),
                           ),
                         ],
@@ -112,10 +115,11 @@ class OverviewAccount extends StatelessWidget {
               },
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom:10.0),
+              padding: const EdgeInsets.only(bottom: 10.0),
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text("SEE ALL",
+                child: Text(
+                  "SEE ALL",
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.green,
