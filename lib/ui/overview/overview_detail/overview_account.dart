@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rally/model/rally_provider.dart';
+import 'package:flutter_rally/ui/home.dart';
 import 'package:provider/provider.dart';
 
-class OverviewAccount extends StatelessWidget {
+class OverviewAccount extends StatefulWidget {
   const OverviewAccount({Key key}) : super(key: key);
 
   @override
+  _OverviewAccountState createState() => _OverviewAccountState();
+}
+
+class _OverviewAccountState extends State<OverviewAccount> {
+  final data = 1;
+  @override
   Widget build(BuildContext context) {
+
     var list = context.read<ReallyProvider>();
     return Container(
       child: Card(
