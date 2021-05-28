@@ -11,23 +11,23 @@ class AccountsPage extends StatefulWidget {
 }
 
 class _AccountsPageState extends State<AccountsPage> {
+  int key = 0;
   @override
   Widget build(BuildContext context) {
     var list = context.read<ReallyProvider>();
-    int key = 0;
 
-    setState(() {
-      key = key + 1;
-    });
+    Map<String, double> dataMap = new Map();
+    dataMap.putIfAbsent("Checking", () => 2215.13);
+    dataMap.putIfAbsent("Home Savings", () => 8676.88);
+    dataMap.putIfAbsent("Car Savings", () => 987.48);
+    dataMap.putIfAbsent("Vacation", () => 253.00);
 
     var chart = PieChart(
       key: ValueKey(key),
-      dataMap: list.accounts,
-      animationDuration: Duration(milliseconds: 80000),
+      dataMap: dataMap,
+      animationDuration: Duration(milliseconds: 4000),
       chartLegendSpacing: 16.0,
-      chartRadius: MediaQuery.of(context).size.width / 1.2 > 300
-          ? 300
-          : MediaQuery.of(context).size.width / 1.2,
+      chartRadius: MediaQuery.of(context).size.width / 1.2,
       colorList: list.colors,
       initialAngleInDegree: 0,
       chartType: ChartType.ring,
@@ -70,7 +70,7 @@ class _AccountsPageState extends State<AccountsPage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 130.0),
+                            padding: const EdgeInsets.only(top: 150.0),
                             child: Center(
                               child: Column(
                                 children: [

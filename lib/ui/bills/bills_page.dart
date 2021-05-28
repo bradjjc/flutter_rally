@@ -17,7 +17,7 @@ class _BillsPageState extends State<BillsPage> {
 
     var chart = PieChart(
       dataMap: list.bills,
-      animationDuration: Duration(milliseconds: 8000),
+      animationDuration: Duration(milliseconds: 4000),
       chartLegendSpacing: 16.0,
       chartRadius: MediaQuery.of(context).size.width / 1.2,
       colorList: list.colorsTwo,
